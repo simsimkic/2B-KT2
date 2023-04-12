@@ -1,0 +1,31 @@
+﻿<Window x:Class="TravelAgencyProject.View.ShowReschedulingRequestsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="ShowReschedulingRequestsView" Height="450" Width="800">
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListBox x:Name="listBox" Margin="5" Height="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ReservationId: " />
+                            <TextBlock Text="{Binding ReservationId}" />
+                            <TextBlock Text=", New date: " />
+                            <TextBlock Text="{Binding NewDate}" />
+                            <TextBlock Text=", Status: " />
+                            <TextBlock Text="{Binding Status}" />
+                            <TextBlock Text=", Rejection summary: " />
+                            <TextBlock Text="{Binding RejectionSummary}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

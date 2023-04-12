@@ -1,0 +1,63 @@
+﻿<Window x:Class="TravelAgencyProject.View.RescheduleReservationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="RescheduleReservationView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button x:Name="GetAllRequests" Content="Get all requests" Click="GetAll_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+            <Button x:Name="SeeNotifications" Content="See notifications" Click="SeeNotifications_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+
+           
+            <StackPanel Margin="5">
+                <TextBlock Text="New date"/>
+                <DatePicker x:Name="NewDatePicker"></DatePicker>
+            </StackPanel>
+            <Button x:Name="RescheduleButton" Content="Reschedule" Click="RescheduleButton_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,377,673,0">
+
+            <Button x:Name="BackButton" Content="Back" Click="BackButton_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+        </StackPanel>
+
+
+
+        <!-- Right Side -->
+        <StackPanel Grid.Column="1">
+            <ListBox x:Name="listBox" Margin="5" Height="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Accommodation name: " />
+                            <TextBlock Text="{Binding Accommodation.Name}" />
+                            <TextBlock Text=", Date: " />
+                            <TextBlock Text="{Binding Date}" />
+                            <TextBlock Text=", Guests numer: " />
+                            <TextBlock Text="{Binding GuestsNumber}" />
+                            <TextBlock Text=", ReservedDayNumber: " />
+                            <TextBlock Text="{Binding ReservedDayNumber}" />
+                            <TextBlock Text=", Status: " />
+                            <TextBlock Text="{Binding Status}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+    </Grid>
+
+</Window>

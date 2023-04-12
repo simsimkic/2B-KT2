@@ -1,0 +1,81 @@
+﻿<Window x:Class="TravelAgencyProject.View.TourGuestHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="TourGuestHome" Height="520" Width="700"
+        Loaded="TourGuestHome_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Left Side -->
+        <StackPanel Grid.Column="0">
+            <Button Content="My Profile" Margin="5" Click="Button_Click_MyProfile" Background="#007ACC" Padding="9 13"/>
+            <Button Content="Reserved Tours" Margin="5" Click="Button_Click_ReservedTours" Background="#007ACC" Padding="9 13"/>
+            <Button Content="Show All Tours" Margin="5" Click="Button_Click" Background="#007ACC" Padding="9 13"/>
+            <StackPanel Margin="5">
+                <TextBlock Text="City"/>
+                <TextBox x:Name="CityTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="State"/>
+                <TextBox x:Name="StateTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Duration"/>
+                <TextBox x:Name="DurationTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Language"/>
+                <TextBox x:Name="LanguageTextBox"/>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Guests Number"/>
+                <TextBox x:Name="GuestsNumberTextBox"/>
+            </StackPanel>
+            <Button x:Name="SearchButton" Content="Search" Click="SearchButton_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+            <Button x:Name="LogoutButton" Content="Logout" Click="LogoutButton_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+        </StackPanel>
+
+        <!-- Right Side -->
+        <StackPanel Grid.Column="1">
+            <ListBox x:Name="listBox" ItemsSource="{Binding Tour}" SelectedItem="{Binding SelectedTour}" Margin="5" Height="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name: " />
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text=", Description: " />
+                            <TextBlock Text="{Binding Description}" />
+                            <TextBlock Text=", Language: " />
+                            <TextBlock Text="{Binding Language}" />
+                            <TextBlock Text=", MaxGuestNumber: " />
+                            <TextBlock Text="{Binding MaxGuestNumber}" />
+                            <TextBlock Text=", Duration: " />
+                            <TextBlock Text="{Binding Duration}" />
+                            <TextBlock Text=", Location:" />
+                            <TextBlock Text="{Binding TourLocation.City}" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="{Binding TourLocation.State}" />
+                            <TextBlock Text=", Images:" />
+                            <TextBlock Text="{Binding Images}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Content="Book Now" Click="BookTour" Margin="5" Background="#007ACC" Padding="9 13"/>
+            
+        </StackPanel>
+
+    </Grid>
+
+</Window>

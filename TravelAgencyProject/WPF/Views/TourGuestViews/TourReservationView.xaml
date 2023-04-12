@@ -1,0 +1,53 @@
+﻿<Window x:Class="TravelAgencyProject.View.TourReservationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="TourReservationView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Left Side -->
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="0 50">
+            <TextBlock Text="Booking Page" FontSize="20" FontWeight="Bold" Foreground="#007ACC"/>
+            <StackPanel  Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Tour Name: " />
+                    <TextBlock x:Name="nameTextBlock" Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Tour Description: " />
+                    <TextBlock x:Name="descriptionTextBlock" Text="{Binding Description}" />
+                </StackPanel>
+               
+                
+            </StackPanel>
+            <StackPanel Margin="5 20">
+                <TextBlock Text="Enter number of guests"/>
+                <TextBox x:Name="GuestsNumberTextBox" Margin="0 5"/>
+                <TextBlock Text="Select voucher:"/>
+                <ComboBox x:Name="availableVouchers"
+                            ItemsSource="{Binding AvailableVouchers}"
+                            DisplayMemberPath="Name"
+                             SelectedValuePath="Id"/>
+
+            </StackPanel>
+            
+
+            <Button x:Name="BookingButton" Content="Book now" Click="BookingButton_Click" Margin="5" Background="#007ACC" Padding="20 9"/>
+            <Button x:Name="RedirectingButton" Content="Back to Browse" Click="RedirectingButton_Click" Margin="5" Background="#fff" BorderBrush="#fff" Padding="1" Foreground="#212121" FontSize="10"/>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>

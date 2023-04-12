@@ -1,0 +1,72 @@
+﻿<Window x:Class="TravelAgencyProject.View.OwnerReviewView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="OwnerReviewView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0">
+            
+            <StackPanel Margin="5">
+                <TextBlock Text="Cleanness (1-5)"/>
+                <Slider Value ="3" Grid.Row="0" Grid.Column="1" x:Name="CleannessSlider" Minimum="1" Maximum="5" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True"/>
+            </StackPanel>
+                
+            <StackPanel Margin="5">
+                <TextBlock Text="Owner fairness (1-5)"/>
+                <Slider Value ="3" Grid.Row="0" Grid.Column="1" x:Name="OwnerFarinessSlider" Minimum="1" Maximum="5" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Comment"/>
+                <TextBox Name="CommentTextBox"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock Text="Images (separated with space)"/>
+                <TextBox Name="ImagesTextBox"/>
+            </StackPanel>
+            
+
+            <Button x:Name="ReviewOwnerButton" Content="Review owner" Click="ReviewOwner_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,377,673,0">
+
+            <Button x:Name="BackButton" Content="Back" Click="BackButton_Click" Margin="5" Background="#007ACC" Padding="9 13"/>
+        </StackPanel>
+
+
+
+        <!-- Right Side -->
+        <StackPanel Grid.Column="1">
+            <ListBox x:Name="listBox" Margin="5" Height="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Owner: " />
+                            <TextBlock Text="{Binding Accommodation.Owner.Username}" />
+                            <TextBlock Text=", Accommodation: " />
+                            <TextBlock Text="{Binding Accommodation.Name}" />
+                            <TextBlock Text=", Date: " />
+                            <TextBlock Text="{Binding Date}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+    </Grid>
+
+</Window>

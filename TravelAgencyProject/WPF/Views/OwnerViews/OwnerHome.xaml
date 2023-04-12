@@ -1,0 +1,29 @@
+﻿<Window x:Class="TravelAgencyProject.View.OwnerHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="OwnerHome" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Button Content="Log out" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Click="Button_Click" Tag="LogOutButton"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Create New Accommodation" Click="Button_Click" Tag="Functionality1Button" Margin="0 0 0 10"/>
+            <Button Content="Review guests" Click="Button_Click" Tag="Functionality2Button" Margin="0 0 0 10"/>
+            <Button Content="Owner's Reviews" Click="Button_Click" Tag="Functionality3Button" Margin="0 0 0 10"/>
+            <Button Content="Reservation Reschedule Requests" Click="Button_Click" Tag="Functionality4Button" Margin="0 0 0 10"/>
+            <Button Content="Owner Profile" Click="Button_Click" Tag="Functionality5Button" Margin="0 0 0 10"/>
+            <Button Content="List of all accommodations" Click="Button_Click" Tag="Functionality6Button" Margin="0 0 0 10"/>
+        </StackPanel>
+    </Grid>
+</Window>

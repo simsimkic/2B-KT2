@@ -1,0 +1,93 @@
+﻿<Window x:Class="TravelAgencyProject.View.TourGuideToursView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="TourGuideToursView" Height="768" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation = "Horizontal" Background="CadetBlue" Width="Auto" Height="50" VerticalAlignment="Top">
+            <Label Grid.Column="1" Content="Tours" x:Name = "allTodaysTour" Width = "Auto" FontSize="32"/>
+            <Label Grid.Column="2" Content="Statistics" x:Name = "tourStatistics" Width = "Auto" FontSize="32" MouseLeftButtonUp="tourStatistics_MouseLeftButtonUp"/>
+            <Label Grid.Column="2" Content="Requests" x:Name = "tourRequest" Width = "Auto" FontSize="32"/>
+            <Label Grid.Column="3" Content="Profile" x:Name = "userProfile" Width = "Auto" FontSize="32" MouseLeftButtonUp="userProfile_MouseLeftButtonUp"/>
+            <Label Grid.Column="4" Content="Help" x:Name = "helpWizard" Width = "Auto" FontSize="32"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Name="TodayTours" Content="View Todays Tours" Click="TodayTours_Click"/>
+            <Button Name="CreateTour" Content="Create Tour" Click="CreateTour_Click"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="2">
+        <DataGrid CanUserAddRows="False" Name="toursGrid" Height="200"
+             SelectedItem="{Binding SelectedTour}"
+          AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="205,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tour Name" Binding="{Binding Tour.Name}" />
+                <DataGridTextColumn Header="State" Binding="{Binding Tour.Location.State}" />
+                <DataGridTextColumn Header="City" Binding="{Binding Tour.Location.City}" />
+                <DataGridTextColumn Header="Date And Time" Binding="{Binding Tour.DateTime}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Tour.Description}" />
+                <DataGridTextColumn Header="Language" Binding="{Binding Tour.Language}" />
+                <DataGridTextColumn Header="Duration (Hours)" Binding="{Binding Tour.Duration}"/>
+                <DataGridTextColumn Header="Number of Guests" Binding="{Binding GuestsNumber}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                                <Button x:Name="StartTourButton" Content="Start" Click="StartTourButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="CancelTourButton" Content="Cancel" Click="CancelTourButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" Name="TrackTourStackPanel">
+            <StackPanel x:Name="CheckPointsStackPanel" Margin="240, 250" MaxHeight="400" Orientation="Vertical">
+                <Label Content="Check Points of Selected Tour"/>
+                <ListBox x:Name="CheckPointsBoxZone" SelectedItem="{Binding SelectedCheckPoint}" ItemsSource="{Binding CheckPoints}" Background="Azure">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox x:Name="CheckBoxZone" Content="{Binding Coordinates}" IsChecked="{Binding IsTagged, Mode=TwoWay}" Checked="IsActive_Checked" Margin="0,5,0,0"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <StackPanel x:Name="AttendanceStackPanel" Margin="-100, 250" MaxHeight="400" Orientation="Vertical">
+                <Label Content="Tour Attendances"/>
+                <DataGrid CanUserAddRows="False" x:Name="guestInformationGrid" 
+              SelectedItem="{Binding SelectedAttendance}"
+              AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding TourGuest.FirstName}" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding TourGuest.LastName}" />
+                        <DataGridTextColumn Header="Age" Binding="{Binding TourGuest.Age}" />
+                        <DataGridTemplateColumn Header="Present">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="CheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsChecked="{Binding IsPresent, Mode=TwoWay}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Check Point" Binding="{Binding CheckPointCoordinate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

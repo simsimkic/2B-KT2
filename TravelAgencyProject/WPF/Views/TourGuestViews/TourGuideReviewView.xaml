@@ -1,0 +1,46 @@
+﻿<Window x:Class="TravelAgencyProject.View.TourGuideReviewView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgencyProject.View"
+        mc:Ignorable="d"
+        Title="TourGuideReviewView" Height="500" Width="500">
+    <Grid VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="The tour you attended is over." FontSize="24" FontWeight="Bold" TextAlignment="Center" Foreground="#007ACC"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Please, review the tour and its tour guide" FontSize="16" Margin="0,0,0,20" TextAlignment="Center" Foreground="Gray"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,10" >
+            <TextBlock Text="Tour guide knowledge: " VerticalAlignment="Center" Margin="60,0,0,0"/>
+            <Slider x:Name="knowledgeSlider" Width="200" Margin="10,0" Minimum="1" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,10" >
+            <TextBlock Text="Tour guide Language: " VerticalAlignment="Center" Margin="60,0,0,0"/>
+            <Slider x:Name="languageSlider" Width="200" Margin="10,0" Minimum="1" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,10" >
+            <TextBlock Text="Interestingness of the tour: " VerticalAlignment="Center" Margin="60,0,0,0"/>
+            <Slider x:Name="interestingnessSlider" Width="200" Margin="10,0" Minimum="1" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True"/>
+        </StackPanel>
+
+        <TextBox x:Name="commentTextBox" Grid.Row="5" Grid.Column="0" Margin="10" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" Height="100" />
+        <TextBox x:Name="imagesTextBox" Grid.Row="6" Grid.Column="0" Margin="10" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" />
+        <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+            <Button Content="Submit" Click="Button_Click" Margin="10" Padding="10,5" Background="#007ACC" Foreground="White"/>
+            <Button Content="Later" Click="Button_Click1" Margin="10" Padding="10,5"/>
+        </StackPanel>
+    </Grid>
+</Window>
